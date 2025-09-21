@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurant Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary-bg-light: #f1f5bd;
+      --primary-bg-dark: #ffc0cb;
+      --button-bg-color: #f58787;
+      --text-color: #2c2c2c;
+      --nav-text-color: #000;
+      --nav-active-color: #f58787;
+      --nav-hover-color: #0f0f0f;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-color);
+      background: linear-gradient(to bottom right, #FFFAE6 0%, #FFC0CB 100%);
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      background-color: var(--nav-active-color);
+      padding: 15px 0;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--nav-text-color);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li:first-child a {
+      color: var(--nav-hover-color);
+    }
+
+    nav ul li a:hover {
+      color: var(--nav-hover-color);
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: var(--nav-text-color);
+      cursor: pointer;
+    }
+
+    .hero-section {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: space-between;
+      min-height: 100vh; /* Fill full screen height */
+    }
+
+    .hero-content {
+      flex: 1 1 50%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .call-to-action {
+      background-color: var(--button-bg-color);
+      color: #000;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .call-to-action:hover {
+      background-color: #e06c6c;
+      transform: translateY(-2px);
+    }
+
+    .call-to-action a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hero-image-container {
+      flex: 1 1 50%;
+      overflow: hidden;
+    }
+
+    .hero-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+      .hero-section {
+        flex-direction: column;
+        min-height: auto;
+      }
+
+      .hero-content, .hero-image-container {
+        flex: 1 1 100%;
+        padding: 20px;
+      }
+
+      .hero-image-container img {
+        height: auto;
+      }
+
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      nav.mobile-open ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--nav-active-color);
+        z-index: 1000;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        padding: 15px 0;
+        gap: 10px;
+      }
+
+      nav.mobile-open ul li {
+        text-align: center;
+      }
+
+      nav.mobile-open ul li a {
+        color: var(--nav-text-color);
+      }
+
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-content p {
+        font-size: 0.95rem;
+      }
+
+      .call-to-action {
+        padding: 12px 25px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero-content p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="Order.html">Order</a></li>
+      <li><a href="FoodMenu.html">Food</a></li>
+      <li><a href="Restaurant.html">Restaurant</a></li>
+      <li><a href="Testimonials.html">Testimonials</a></li>
+      <li><a href="Contact.html">Contact Us</a></li>
+    </ul>
+    <button class="menu-icon">☰</button>
+  </nav>
+</header>
+
+<main class="hero-section">
+  <div class="hero-content">
+    <h1>LOREM IPSUM</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id est vitae dolor rhoncus tristique. Curabitur nec faucibus purus. Quisque congue sem nec justo mollis, in tincidunt erat pretium. Sed pulvinar, massa ac porta viverra.</p>
+    <button class="call-to-action"><a href="ClickME.html">Click Me</a></button>
+  </div>
+  <div class="hero-image-container">
+    <img src="pexels-robin-stickel-70497.jpg" alt="Delicious burger with bacon and fries">
+  </div>
+</main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuIcon = document.querySelector('.menu-icon');
+    const nav = document.querySelector('nav');
+
+    if (menuIcon && nav) {
+      menuIcon.addEventListener('click', () => {
+        nav.classList.toggle('mobile-open');
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

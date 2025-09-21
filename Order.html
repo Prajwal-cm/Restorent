@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Restaurant Order Page</title>
+  <style>
+    :root {
+      --primary-bg-light: #faecc4;
+      --primary-bg-dark: #ffc0cb;
+      --button-bg-color: #f58787;
+      --text-color: #2c2c2c;
+      --nav-text-color: #000;
+      --nav-active-color: #f58787;
+      --nav-hover-color: #0f0f0f;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, var(--primary-bg-light), var(--primary-bg-dark));
+      padding: 0; /* remove default padding */
+      color: var(--text-color);
+      min-height: 100vh;
+    }
+
+    /* ===== NAVBAR ===== */
+    header {
+      width: 100%;
+      background-color: var(--nav-active-color);
+      padding: 15px 0;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li:first-child a {
+      color: var(--nav-hover-color);
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--nav-text-color);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: var(--nav-hover-color);
+    }
+
+    .menu-icon {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      color: #4CAF50;
+    }
+
+    .order-section {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background: #000;
+    }
+
+    .order-image {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      display: block;
+      opacity: 0.5;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      padding: 30px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background: rgba(0, 0, 0, 0.6);
+      overflow-y: auto;
+      font-size: 16px;
+      border-radius: 8px;
+    }
+
+    .overlay h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .overlay label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+
+    .overlay input,
+    .overlay select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      color: var(--text-color);
+      background-color: rgba(255, 255, 255, 0.7);
+      outline: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .overlay input:focus,
+    .overlay select:focus {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-color: var(--button-bg-color);
+    }
+
+    .overlay button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background-color: var(--button-bg-color);
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+    }
+
+    .overlay button:hover {
+      background-color: #e06f6f;
+    }
+
+    .back-button {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.3);
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.6);
+      color: #333;
+    }
+
+    .overlay::-webkit-scrollbar {
+      width: 8px;
+    }
+    .overlay::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .order-section {
+        max-width: 100%;
+        border-radius: 0;
+      }
+      .order-image {
+        height: 500px;
+      }
+      .overlay {
+        padding: 20px;
+        font-size: 14px;
+      }
+      .overlay h2 {
+        font-size: 22px;
+      }
+      .back-button {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+        bottom: 15px;
+        left: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="Order.html">Order</a></li>
+        <li><a href="FoodMenu.html">Food</a></li>
+        <li><a href="Restaurant.html">Restaurant</a></li>
+        <li><a href="Testimonials.html">Testimonials</a></li>
+        <li><a href="Contact.html">Contact Us</a></li>
+      </ul>
+      <button class="menu-icon">☰</button>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <div class="header">
+      <h1>Restaurant Order Page</h1>
+      <p>Place your order with us and enjoy delicious meals!</p>
+    </div>
+
+    <div class="order-section">
+      <img src="people-taking-photos-food.jpg" alt="Food Image" class="order-image" />
+
+      <div class="overlay">
+        <h2>Order Your Favorite Meal</h2>
+
+        <form id="order-form" onsubmit="event.preventDefault(); alert('Order Placed!');">
+          <label for="dish">Select a Dish:</label>
+          <select id="dish" name="dish" required>
+            <option value="" disabled selected>Select a dish</option>
+            <option value="pizza">Pizza</option>
+            <option value="burger">Burger</option>
+            <option value="pasta">Pasta</option>
+            <option value="salad">Salad</option>
+          </select>
+
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" name="quantity" min="1" value="1" required />
+
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required />
+
+          <label for="address">Delivery Address:</label>
+          <input type="text" id="address" name="address" placeholder="Enter your address" required />
+
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required />
+
+          <button type="submit">Place Order</button>
+        </form>
+      </div>
+
+      <button class="back-button" aria-label="Go back to home" title="Go back to home" onclick="window.location.href='Home.html'">
+        ←
+      </button>
+    </div>
+  </div>
+
+  <div class="footer" style="text-align:center; margin-top: 40px; font-size: 14px; color: #777;">
+    <p>&copy; 2025 Restaurant Inc. All rights reserved.</p>
+  </div>
+
+</body>
+</html>

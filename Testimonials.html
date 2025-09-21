@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Testimonials</title>
+  <style>
+    :root {
+      --primary-color: #f58787;   /* Main accent color (salmon pink) */
+      --secondary-color: #117964; /* Green accent */
+      --bg-light: #f0e4c3;        /* Light yellow background */
+      --bg-dark: #ffc0cb;         /* Light pink (optional for gradients) */
+      --text-dark: #2c2c2c;
+      --nav-text-color: #000;
+      --nav-active-color: #f58787;
+      --nav-hover-color: #0f0f0f;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    /* ===== NAVBAR ===== */
+    header {
+      width: 100%;
+      background-color: var(--nav-active-color);
+      padding: 15px 0;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--nav-text-color);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li:first-child a {
+      color: var(--nav-hover-color);
+    }
+
+    nav ul li a:hover {
+      color: var(--nav-hover-color);
+    }
+
+    /* ===== TESTIMONIALS SECTION ===== */
+    .testimonials {
+      text-align: center;
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonials h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    .testimonials p {
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      color: #555;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .testimonial-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0px 8px 24px rgba(0,0,0,0.1);
+      text-align: left;
+      position: relative;
+      animation: slideUp 1.2s ease forwards;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .testimonial-card:nth-child(1) { animation-delay: 0.2s; }
+    .testimonial-card:nth-child(2) { animation-delay: 0.4s; }
+    .testimonial-card:nth-child(3) { animation-delay: 0.6s; }
+
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      transition: transform 0.3s ease;
+    }
+
+    .testimonial-card p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .testimonial-author img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary-color);
+    }
+
+    .testimonial-author h4 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+      color: var(--secondary-color);
+    }
+
+    .testimonial-author span {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* ===== Animations ===== */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .testimonials h2 {
+        font-size: 2rem;
+      }
+      .testimonials p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="Order.html">Order</a></li>
+        <li><a href="FoodMenu.html">Food</a></li>
+        <li><a href="Restaurant.html">Restaurant</a></li>
+        <li><a href="Testimonials.html">Testimonials</a></li>
+        <li><a href="Contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="testimonials">
+    <h2>What Our Customers Say</h2>
+    <p>We value our customers' feedback and strive to provide the best dining experience.</p>
+
+    <div class="testimonial-container">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card">
+        <p>“The food was absolutely delicious! The presentation was beautiful, and the staff was super friendly.”</p>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Customer">
+          <div>
+            <h4>Shruthi</h4>
+            <span>Food Blogger</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card">
+        <p>“Best restaurant in town! The ambience is cozy, and every dish feels like it’s made with love.”</p>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer">
+          <div>
+            <h4>Prajwal C M </h4>
+            <span>Customer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card">
+        <p>“I always come here with my family. The service is fast, the food is healthy and so tasty!”</p>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer">
+          <div>
+            <h4>Komal</h4>
+            <span>Regular Customer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
